@@ -1,1 +1,8 @@
-<mat-toolbar>My App</mat-toolbar>
+<mat-toolbar color="accent">
+  <mat-toolbar-row>
+    <span>TODO</span>
+    <span class="example-spacer"></span>
+    <mat-icon [routerLink]="['/', 'users']">people_outline</mat-icon>
+    <mat-icon [routerLink]="['/', 'articles']">post_add</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>

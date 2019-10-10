@@ -1,20 +1,21 @@
+import { EntityState } from '@datorama/akita';
+import { PageEvent } from '@angular/material';
+
 export interface UserModel {
-  id: number;
-  email: string;
+  avatar: string;
+  createdAt: string | Date;
+  id: string;
+  name: string;
   first_name: string;
   last_name: string;
-  avatar: string;
+  job_title: string;
 }
 
-export interface UsersList {
-  data: UserModel[];
-  totalPages: number;
-  total: number;
-  per_page: string;
-  page: string;
+
+export interface UsersEntityState {
+  users: UserModel[];
 }
 
-export interface UsersStoreState {
-  name: string;
-  list: UsersList;
+export interface UsersState extends EntityState<UsersEntityState> {
+  pagination: PageEvent;
 }

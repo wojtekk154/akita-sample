@@ -6,15 +6,23 @@ import { NgModule } from '@angular/core';
 let routes: Routes;
 routes = [
   {
-    path: ROUTES.users,
-    loadChildren: () => {
-
-      const promise = import('./features/users/users.module').then(m => m.UsersModule);
-      return promise;
-    }
+    path: ROUTES.home.path,
+    loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: '',
+    path: ROUTES.users.path,
+    loadChildren: () => import('./features/users/users.module').then(m => m.UsersModule)
+  },
+  {
+    path: ROUTES.articles.path,
+    loadChildren: () => import('./features/articles/articles.module').then(m => m.ArticlesModule)
+  },
+  {
+    path: ROUTES.todos.path,
+    loadChildren: () => import('./features/todos/todos.module').then(m => m.TodosModule)
+  },
+  {
+    path: '**',
     redirectTo: 'users',
     pathMatch: 'full'
   }
@@ -24,4 +32,5 @@ routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

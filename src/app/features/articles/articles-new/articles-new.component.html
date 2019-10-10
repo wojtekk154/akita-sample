@@ -1,0 +1,22 @@
+<mat-card class="card">
+  <mat-card-header>
+    <mat-card-title>Create new Article</mat-card-title>
+  </mat-card-header>
+  <form [formGroup]="articleForm" (ngSubmit)="onSubmitArticle()">
+    <mat-card-content>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput placeholder="Title" formControlName="title"/>
+        <mat-error *ngIf="articleForm.get('title').valid">Title required and should have more than 15 signs</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Content</mat-label>
+        <textarea matInput placeholder="Content" formControlName="content" cols="30" rows="10"></textarea>
+        <mat-error *ngIf="articleForm.get('content').valid">Content is required</mat-error>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-stroked-button type="submit">Submit</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
