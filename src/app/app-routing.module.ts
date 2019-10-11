@@ -23,7 +23,7 @@ routes = [
   },
   {
     path: '**',
-    redirectTo: 'users',
+    redirectTo: '',
     pathMatch: 'full'
   }
 ];

@@ -32,7 +32,7 @@ export class ListComponent implements OnInit {
 
   private initUsersListAndPagination(): void {
     this.users$ = combineLatest([
-      this.usersQuery.select(entity => entity.entities.users || []),
+      this.usersQuery.selectAll(),
       this.usersQuery.select(store => store.pagination)
     ]).pipe(
       filter(([users, _]: [UserModel[], PageEvent]) => !!users.length),

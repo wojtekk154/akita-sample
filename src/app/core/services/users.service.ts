@@ -14,20 +14,14 @@ export class UsersService {
 
   public getUsersData(): void {
     this.httpClient.get('/users').subscribe((users: UserModel[]) => {
-      this.usersStore.update(state => {
-        return {
-          ...state,
-          entities: { users },
-          pagination: initPagination(users)
-        };
-      });
+      this.usersStore.add(users);
+      this.usersStore.update({ pagination: initPagination(users) });
     });
   }
 
   public setPage(page: PageEvent): void {
-    this.usersStore.update(state => ({
-      ...state,
+    this.usersStore.update({
       pagination: page
-    }));
+    });
   }
 }

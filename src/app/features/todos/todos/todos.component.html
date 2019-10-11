@@ -1,1 +1,21 @@
-<p>todos works!</p>
+<div class="container">
+  <div class="NewTodo">
+    <div class="NewTodo-filter">
+      <form [formGroup]="filterForm">
+        <mat-form-field>
+          <mat-label>Search</mat-label>
+          <input matInput placeholder="Search" formControlName="query"/>
+          <mat-icon matSuffix color="primary">search</mat-icon>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="NewTodo-addNew">
+      <button mat-icon-button color="primary" (click)="openAddTodoForm()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <app-todos-list (paging)="setPage($event)"
+                  (toggleSelectionTodo)="toggleSelectionTodo($event)"
+                  (removeTodo)="removeSingleTodo($event)"></app-todos-list>
+</div>

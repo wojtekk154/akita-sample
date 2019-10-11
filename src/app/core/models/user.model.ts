@@ -11,11 +11,6 @@ export interface UserModel {
   job_title: string;
 }
 
-
-export interface UsersEntityState {
-  users: UserModel[];
-}
-
-export interface UsersState extends EntityState<UsersEntityState> {
+export interface UsersState extends EntityState<UserModel> {
   pagination: PageEvent;
 }

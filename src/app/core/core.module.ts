@@ -17,7 +17,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule
   ],
   declarations: [NavBarComponent],
-  exports: [NavBarComponent, MaterialModule],
+  exports: [
+    NavBarComponent,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptor, multi: true }
   ]

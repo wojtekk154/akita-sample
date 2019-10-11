@@ -17,10 +17,7 @@ export interface TodoModel {
   userId: string;
 }
 
-export interface TodoEntity {
-  todos: TodoModel[];
-}
-
-export interface TodoState extends EntityState<TodoEntity> {
+export interface TodoState extends EntityState<TodoModel> {
   pagination: PageEvent;
+  selectedTodos: string[];
 }

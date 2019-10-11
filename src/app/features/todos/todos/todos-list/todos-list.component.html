@@ -1,1 +1,44 @@
-<p>todos-list works!</p>
+<div class="List">
+  <table mat-table [dataSource]="todos$ | async">
+    <ng-container matColumnDef="check">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon class="check-icon" (click)="toggleSelection(element.id)">{{  (isChecked(element.id) | async) ? 'check' : 'check_box_outline_blank' }}</mat-icon>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef> Title</th>
+      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description</th>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status</th>
+      <td mat-cell *matCellDef="let element"> {{status[element.status]}} </td>
+    </ng-container>
+    <ng-container matColumnDef="createdAt">
+      <th mat-header-cell *matHeaderCellDef> Created At</th>
+      <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+    </ng-container>
+    <ng-container matColumnDef="userId">
+      <th mat-header-cell *matHeaderCellDef> User</th>
+      <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+    </ng-container>
+    <ng-container matColumnDef="Action">
+      <th mat-header-cell *matHeaderCellDef> Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="onRemoveTodo(element.id)"><mat-icon>remove</mat-icon></button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+  <mat-paginator *ngIf="(pagination$ | async) as paging"
+                 [length]="paging.length"
+                 [pageSize]="paging.pageSize"
+                 [pageSizeOptions]="[5, 10, 25, 100]"
+                 (page)="setCurrentPage($event)">
+  </mat-paginator>
+</div>

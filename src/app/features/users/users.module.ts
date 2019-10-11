@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { UsersComponent } from './users/users.component';
 import { ListComponent } from './list/list.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MaterialModule } from '../../core/material.module';
 import { ROUTES } from '../../core/constants/routes';
+import { MaterialModule } from '../../core/material.module';
 
 const routes: Routes = [
   {
@@ -26,8 +26,8 @@ const routes: Routes = [
   declarations: [UsersComponent, ListComponent],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),
-    MaterialModule
+    MaterialModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class UsersModule {
